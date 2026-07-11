@@ -7,31 +7,22 @@ class Solution:
             adj[j].append(i)
         print(adj)
         vis=set()
-        req=n*(n-1)//2
         f=0
+        def dfs(node):  
+            vis.add(node)
+            c=1
+            ed=len(adj[node])
+            for i in adj[node]:
+                if i not in vis:
+                    n,e=dfs(i)
+                    c+=n
+                    ed+=e
+            return (c,ed)
+
         for i in range(n):
             if i not in vis:
-                q=deque()
-                q.append(i)
-                vis.add(i)
-                c=0
-                no_no=0
-                while q:
-                    d=q.popleft()
-                    c+=1
-                    no_no+= len(adj[d])
-                    for neg in adj[d]:
-                        if neg not in vis:
-                            vis.add(neg)
-                            q.append(neg)
-                no_no=no_no//2
-                req = c*(c - 1)//2
-                if(no_no==req):
+                c,ed=dfs(i)
+                ed//=2
+                if(ed==c*(c-1)//2):
                     f+=1
         return f
-                        
-                
-                
-
-
-            
