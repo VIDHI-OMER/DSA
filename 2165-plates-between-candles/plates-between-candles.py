@@ -9,25 +9,22 @@ class Solution:
         for i in range(len(s)):
             if (s[i]=='|'):
                 lf=i
-                left[i]=lf
-            else:
-                left[i]=lf
+            left[i]=lf
+            
         print(left)
         rg=-1
         for i in range(len(s)-1,-1,-1):
             if(s[i]=='|'):
                 rg=i
-                right[i]=rg
-            else:
-                right[i]=rg
+            right[i]=rg
+            
         print(right)
         now=0
         for i in range(len(s)):
             if s[i]=='*':
                 now+=1
-                pref[i]=now
-            else:
-                pref[i]=now
+            pref[i]=now
+            
         print(pref)
         for l,r in queries:
             st=right[l]
