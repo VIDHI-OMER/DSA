@@ -6,8 +6,8 @@ class Solution:
             l.append(rem)
             n=n//10
         print(l)
-        maxi=0
-        for i in range(len(l)):
-            for j in range(i+1,len(l)):
-                maxi=max(maxi,l[i]*l[j])  
-        return maxi      
+        l.sort()
+        if len(l)==1:
+            return l[0]
+        else:
+            return l[-1]*l[-2]
