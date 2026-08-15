@@ -1,14 +1,16 @@
 class Solution:
     def brokenCalc(self, startValue: int, target: int) -> int:
-        
-        if startValue==target:
-            return 0
-        if(startValue>target):
-            return startValue-target
-        if(target%2==0):
-            return 1+self.brokenCalc(startValue,target//2)
-        else:
-            return 1+self.brokenCalc(startValue,target+1)
-        
+        c=0
+        while(startValue!=target):
+            if(startValue>target):
+                c+=startValue-target
+                return c
+            if(target%2==0):
+                c+=1
+                target//=2
+            else:
+                c+=1
+                target+=1
+        return c
         
         
