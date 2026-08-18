@@ -1,13 +1,16 @@
 class Solution:
     def maximum69Number (self, num: int) -> int:
-        
-        s=str(num)
-        n=len(s)
-        for i in range(n):
-            if(s[i]=='6'):
-                st=s.replace(s[i],'9',1)
-                return int(st)
-        return num
-        
-
+        idx=-1
+        c=0
+        tmp=num
+        while(tmp):
+            rem=tmp%10
+            if(rem==6):
+                idx=c
+            tmp//=10
+            c+=1
+        if (idx==-1):
+            return num
+        ans=num+3*(10**idx)
+        return ans
         
