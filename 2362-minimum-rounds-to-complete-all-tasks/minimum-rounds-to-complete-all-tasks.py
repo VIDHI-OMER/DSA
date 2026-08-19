@@ -7,14 +7,8 @@ class Solution:
         for i,j in mp.items():
             if j<2:
                 return -1
-            
-            c+=j//3
-            j%=3
-            if(j==1):
-                c-=1
-                c+=2
-            elif j==2:
-                c+=1
-                    
+            if(j%3==0):
+                c+=(j//3)
+            else:
+                c+=(j//3)+1
         return c
-        
