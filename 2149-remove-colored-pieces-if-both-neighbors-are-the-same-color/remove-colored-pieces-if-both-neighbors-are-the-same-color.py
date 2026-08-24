@@ -9,8 +9,7 @@ class Solution:
                     a+=1
                 else:
                     b+=1
-        if a==0 and b==0:
-            return False
+        
         if a>b:
             return True
         return False
