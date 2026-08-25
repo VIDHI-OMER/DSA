@@ -14,7 +14,6 @@ class Solution:
         for i in ans:
             if i:
                 i=int(i)
-                if i not in st:
-                    st.add(i)
+                st.add(i)
         return len(st)
         
