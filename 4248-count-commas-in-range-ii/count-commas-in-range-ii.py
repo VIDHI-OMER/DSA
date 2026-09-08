@@ -1,18 +1,8 @@
 class Solution:
     def countCommas(self, n: int) -> int:
-        low=1000
-        comma=1
+        st=1000
         res=0
-        while low<=n:
-            up=low*1000-1
-            if up>n:
-                up=n
-            cout=up-low+1
-            res+=(cout*comma)
-            low=low*1000
-            comma+=1
+        while(st<=n):
+            res+=(n-st+1)
+            st*=(10**3)
         return res
-
-
-
-        
