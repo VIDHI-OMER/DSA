@@ -2,21 +2,23 @@ class Solution:
     def getHint(self, secret: str, guess: str) -> str:
         bull=0
         cow=0
-        val=[]
+        secret=list(secret)
+        guess=list(guess)
         for i in range(len(secret)):
             if secret[i]==guess[i]:
-                val.append(i)
                 bull+=1
+                secret[i]='C'
+                guess[i]='C'
         #print(bull,val)
         d={}
         for i in range(len(secret)):
-            if i not in val:
+            if secret[i]!='C':
                 if secret[i] not in d:
                     d[secret[i]]=1
                 else:
                     d[secret[i]]+=1
         for i in range(len(guess)):
-            if i not in val:
+            if guess[i]!='C':
                 if guess[i] in d:
                     cow+=1
                     d[guess[i]]-=1
