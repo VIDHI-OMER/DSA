@@ -11,7 +11,6 @@ class Solution:
                 elif f[i]!=c:
                     return False
             return True
-
         for i in range(len(s)):
             f=[0]*26
             for j in range(i,len(s)):
