@@ -6,19 +6,24 @@ class Solution:
         #print(mp)
         i=0
         res=''
+        temp=''
+        openBr=False
         while(i<len(s)):
-            if (s[i].isalpha()):
-                res+=s[i]
-            elif(s[i]=='('):
-                i+=1
-                temp=""
-                while(s[i]!=')'):
-                    temp+=s[i]
-                    i+=1
+            if s[i]=='(':
+                openBr=True
+            elif s[i]==')':
+                openBr=False
                 if temp in mp:
                     res+=mp[temp]
+                    
                 else:
                     res+='?'
+                temp=''
+            elif openBr:
+                temp+=s[i]
+            else:
+                res+=s[i]
+            
             i+=1
         return res
                 
