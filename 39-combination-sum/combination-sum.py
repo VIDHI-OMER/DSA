@@ -1,20 +1,21 @@
 class Solution:
     def combinationSum(self, candidates: list[int], target: int) -> list[list[int]]:
-        lf=[]
-        def suu(i,l,s):
+        n=len(candidates)
+        l1=[]
+        def find(i,l,s): 
             if s>target:
                 return
-            if i>=len(candidates):
+            if i>=n:
                 if s==target:
-                    lf.append(l[:])
+                    l1.append(l[:])
                 return
             s+=candidates[i]
             l.append(candidates[i])
-            suu(i,l,s)
+            find(i,l,s)
             s-=candidates[i]
             l.pop()
-            suu(i+1,l,s)
-        suu(0,[],0)
-        return lf
+            find(i+1,l,s)
+        find(0,[],0)
+        return l1
 
         
