@@ -7,7 +7,7 @@ class Solution:
             if s>n:
                 return
             if i>=m:
-                if s==n:
+                if s==n and len(l)==k:
                     l1.append(l[:])
                 return
             s+=arr[i]
@@ -17,11 +17,7 @@ class Solution:
             l.pop()
             fun(i+1,l,s)
         fun(0,[],0)
-        res=[]
-        for i in l1:
-            if len(i)==k:
-                res.append(i)
-        return res
+        return l1
 
         
         
