@@ -1,8 +1,14 @@
 class Solution:
     def minSwaps(self, nums: List[int]) -> int:
         n=len(nums)
-        new=sorted(nums,key=lambda x:(sum(int(d) for d in str(x)),x))
-        #print(new)
+        def dig_sum(val):
+            s=0
+            while(val):
+                rem=val%10
+                s+=rem
+                val=val//10
+            return s
+        new=sorted(nums,key=lambda val:(dig_sum(val),val))
         mp={}
         swap=0
         for i in range(n):
