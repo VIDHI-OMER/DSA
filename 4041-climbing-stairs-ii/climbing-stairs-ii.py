@@ -1,15 +1,23 @@
 class Solution:
     def climbStairs(self, n: int, costs: List[int]) -> int:
         d={}
-        def call(i):
+        def solve(i):
             if i==n:
                 return 0
+            cst=float('inf')
             if i in d:
                 return d[i]
-            res=float('inf')
-            for j in range(i+1,min(i+3,n)+1):
-                c=costs[j-1]+(j-i)**2
-                res=min(res,c+call(j))
-            d[i]=res
+            j=i+1
+            if j<=n:
+                cst=solve(j)+costs[j-1]+(j-i)**2
+            j=i+2
+            if j<=n:
+                cst=min(cst,costs[j-1]+(j-i)**2+solve(j))
+            j=i+3
+            if j<=n:
+                cst=min(cst,costs[j-1]+(j-i)**2+solve(j))
+            d[i]=cst
             return d[i]
-        return call(0)
+        return solve(0)
+            
+            
